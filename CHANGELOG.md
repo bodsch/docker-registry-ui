@@ -1,5 +1,48 @@
 ## Changelog
 
+## 0.10.2 (2024-05-31)
+
+* Fix repo tag count when a repo name is a prefix for another repo name(s)
+* Allow to override any config option via environment variables using SECTION_KEY_NAME syntax, e.g.
+  LISTEN_ADDR, PERFORMANCE_TAGS_COUNT_REFRESH_INTERVAL, REGISTRY_HOSTNAME etc.
+
+## 0.10.1 (2024-04-19)
+
+* Rename cmd flag `-purge-from-repos` to `-purge-include-repos` to purge tags only for the specified repositories.
+* Add a new cmd flag `-purge-exclude-repos` to skip the specified repositories from the tag purging.
+* Make image column clickable in Event Log.
+
+### 0.10.0 (2024-04-16)
+
+**JUST BREAKING CHANGES**
+
+* We have made a full rewrite. Over 6 years many things have been changed.
+* Renamed github/dockerhub repo from docker-registry-ui -> registry-ui
+* Switched from doing raw http calls to `github.com/google/go-containerregistry`
+* URLs and links are now matching the image references, no more "library" or other weird URL parts.
+* No namespace or only 2-level deep concept
+* An arbitrary repository levels are supported
+* It is even possible to list both sub-repos and tags within the same repo path if you have those
+* Added support for OCI images, so now both Docker + OCI are supported
+* Proper support of Image Index (Index Manifest)
+* Display full information available about Image or Image Index
+* Sub-images (multi-platform ones) are linked under Image Index
+* Changed format of config.yml but the same concept is preserved
+* Event listener path has been changed from /api/events to /event-receiver and you may need to update your registry config
+* Removed built-in cron scheduler for purging tags, please use the normal cron :)
+* Now you can tune the refresh of catalog and separately refresh of tag counting, disable them etc.
+* Everything has been made better! :)
+
+### 0.9.7 (2024-02-21)
+
+* Fix timezone support: now when running a container with `TZ` env var, e.g. "-e TZ=America/Los_Angeles", it will be reflected everywhere on UI.
+* Amend tag info page: add long line break, better format a caption column.
+* Upgrade Go version to 1.22, alpine to 3.19 and other dependencies.
+
+### 0.9.6 (2023-03-30)
+
+* Upgrade Go version to 1.20.2, alpine to 3.17 and other dependencies.
+
 ### 0.9.5 (2022-09-05)
 
 * Upgrade Go version to 1.19.0, alpine to 3.16 and other dependencies.

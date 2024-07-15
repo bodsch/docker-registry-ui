@@ -58,3 +58,19 @@ func ItemInSlice(item string, slice []string) bool {
 	}
 	return false
 }
+
+// UniqueSortedSlice filter out duplicate items from slice
+func UniqueSortedSlice(slice []string) []string {
+	sort.Strings(slice)
+	seen := make(map[string]struct{}, len(slice))
+	j := 0
+	for _, i := range slice {
+		if _, ok := seen[i]; ok {
+			continue
+		}
+		seen[i] = struct{}{}
+		slice[j] = i
+		j++
+	}
+	return slice[:j]
+}
