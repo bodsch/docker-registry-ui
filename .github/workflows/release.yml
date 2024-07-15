@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 0
 
       - name: "build release ${{ matrix.release_tag }} with go ${{ matrix.go }}"
-        uses: wangyoucao577/go-release-action@v1.32
+        uses: wangyoucao577/go-release-action@v1.51
         with:
           github_token: ${{ secrets.GH_REGISTRY_TOKEN }}
           release_tag: ${{ matrix.release_tag }}
