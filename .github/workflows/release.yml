@@ -24,7 +24,7 @@ jobs:
       fail-fast: false
       matrix:
         release_tag:
-          - "0.10.2"
+          - "0.10.3"
         go:
           - "1.22"
 
@@ -35,7 +35,7 @@ jobs:
           fetch-depth: 0
 
       - name: "build release ${{ matrix.release_tag }}"
-        uses: wangyoucao577/go-release-action@v1.51
+        uses: wangyoucao577/go-release-action@v1.52
         with:
           github_token: ${{ secrets.GH_REGISTRY_TOKEN }}
           release_tag: ${{ matrix.release_tag }}
