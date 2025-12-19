@@ -18,8 +18,8 @@ on:
 
 jobs:
   release-linux-amd64:
-    name: "release with go version: ${{ matrix.go }}"
-    runs-on: ubuntu-20.04
+    name: "release ${{ matrix.release_tag }} with go version: ${{ matrix.go }}"
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -30,12 +30,12 @@ jobs:
 
     steps:
       - name: 🛎 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: "build release ${{ matrix.release_tag }}"
-        uses: wangyoucao577/go-release-action@v1.52
+        uses: wangyoucao577/go-release-action@v1.55
         with:
           github_token: ${{ secrets.GH_REGISTRY_TOKEN }}
           release_tag: ${{ matrix.release_tag }}
